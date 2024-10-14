@@ -16,7 +16,7 @@ const Login = () => {
     }
 
   return (
-    <div className='flax flex-col items-center justify-center min-w-96 mx-auto'>
+    <div className='flax flex-col items-center justify-center min-w-96 mx-auto bg-slate-700 rounded-lg' >
         <div className='w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
             <h1 className='text-3x1 font-semibold text-center text-gray-300 '>Login
             <span className='text-blue-500'>IITResearchNet</span>
@@ -44,8 +44,8 @@ const Login = () => {
               <div>
                 <select value={role} onChange={(e) => setRole(e.target.value)} className='w-full input input-bordered h-10' >
                   <option value="">Select Role</option>
-                  <option value="Employer">Employer</option>
-                  <option value="Job Seeker">Job Seeker</option>
+                  <option value="Faculty">Faculty</option>
+                  <option value="Student">Student</option>
                 </select>
               </div>
             </div>

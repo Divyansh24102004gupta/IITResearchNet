@@ -668,18 +668,14 @@
 // export default MyJobs;
 
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import React, {useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaCheck } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
-import { useAuthContext } from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
 
 const MyJobs = () => {
   const [myJobs, setMyJobs] = useState([]);
   const [editingMode, setEditingMode] = useState(null);
-  const { authuser } = useAuthContext();
-  const navigateTo = useNavigate();
   
   // Fetching all jobs
   useEffect(() => {

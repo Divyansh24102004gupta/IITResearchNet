@@ -73,7 +73,7 @@ const PostJob = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-0 mt-20 mb-10">
+    <div className="max-w-2xl mx-auto p-0 mt-20 mb-10" style={{backgroundColor:'#334155', padding:5, borderRadius:'5px', paddingTop:10}}>
       <h3 className="text-2xl font-bold mb-6 text-center text-slate-50">Post a New Job</h3>
       <form onSubmit={handleJobPost} className="space-y-6">
         <div className="grid grid-cols-1 sm:grid-cols-1 gap-4">
@@ -90,16 +90,14 @@ const PostJob = () => {
             className="p-1 border rounded-lg w-full"
           >
             <option value="">Select Category</option>
-            <option value="Graphics & Design">Graphics & Design</option>
-            <option value="Mobile App Development">Mobile App Development</option>
-            <option value="Frontend Web Development">Frontend Web Development</option>
-            <option value="MERN Stack Development">MERN Stack Development</option>
-            <option value="Account & Finance">Account & Finance</option>
-            <option value="Artificial Intelligence">Artificial Intelligence</option>
-            <option value="Video Animation">Video Animation</option>
-            <option value="MEAN Stack Development">MEAN Stack Development</option>
-            <option value="MEVN Stack Development">MEVN Stack Development</option>
-            <option value="Data Entry Operator">Data Entry Operator</option>
+            <option value="Undergraduate Research Programs">Undergraduate Research Programs</option>
+            <option value="Graduate Research Programst">Graduate Research Programs</option>
+            <option value="Postdoctoral Research Programs">Postdoctoral Research Programs</option>
+            <option value="ndustry-Sponsored Research Programs">ndustry-Sponsored Research Programs</option>
+            <option value="Fellowship Research Programs">Fellowship Research Programs</option>
+            <option value="Collaborative Research Programs">Collaborative Research Programs</option>
+            <option value="Summer Research Programs">Summer Research Programs</option>
+            <option value="Research Internships">Research Internships</option>
           </select>
         </div>
 
@@ -134,17 +132,17 @@ const PostJob = () => {
             onChange={(e) => setSalaryType(e.target.value)}
             className="p-1 border rounded-lg w-full"
           >
-            <option value="default">Select Salary Type</option>
-            <option value="Fixed Salary">Fixed Salary</option>
-            <option value="Ranged Salary">Ranged Salary</option>
+            <option value="default">Select Stipend Type</option>
+            <option value="Fixed Salary">Fixed stipend</option>
+            <option value="Ranged Salary">Ranged stipend</option>
           </select>
 
           {salaryType === "default" ? (
-            <p className="text-red-600">Please provide Salary Type *</p>
+            <p className="text-red-600">Please provide Stipend Type *</p>
           ) : salaryType === "Fixed Salary" ? (
             <input
               type="number"
-              placeholder="Enter Fixed Salary"
+              placeholder="Enter Fixed Stipend"
               value={fixedSalary}
               onChange={(e) => setFixedSalary(e.target.value)}
               className="p-1 border rounded-lg w-full"
@@ -153,14 +151,14 @@ const PostJob = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <input
                 type="number"
-                placeholder="Salary From"
+                placeholder="Stipend From"
                 value={salaryFrom}
                 onChange={(e) => setSalaryFrom(e.target.value)}
                 className="p-1 border rounded-lg w-full"
               />
               <input
                 type="number"
-                placeholder="Salary To"
+                placeholder="Stipend To"
                 value={salaryTo}
                 onChange={(e) => setSalaryTo(e.target.value)}
                 className="p-1 border rounded-lg w-full"

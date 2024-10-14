@@ -41,15 +41,22 @@ export const login = async (req, res) => {
   try {
     const { username, password, role } = req.body;
     const user = await User.findOne({ username });
+
     const isPasswordCorrect = await bcrypt.compare(
       password,
       user?.password || ""
     );
 
-    if (!user || !isPasswordCorrect || !role) {
-      return res
-        .status(400)
-        .json({ error: "Invalid username or password or role is not given" });
+    if (!user || !isPasswordCorrect) {
+      return res.status(400).json({ error: "Invalid username or password" });
+    }
+
+    if (!role) {
+      return res.status(400).json({ error: "Please provide role!" });
+    }
+
+    if (user.role !== role) {
+      return res.status(400).json({ error: "Invalid role is selected!" });
     }
 
     generateTokenAndSetCookie(user._id, res);
@@ -59,7 +66,7 @@ export const login = async (req, res) => {
       fullName: user.fullName,
       username: user.username,
       profilePic: user.profilePic,
-      role,
+      role: user.role,
     });
   } catch (error) {
     console.log("Error in login controller", error.message);
@@ -87,18 +94,26 @@ export const signup = async (req, res) => {
   try {
     const { fullName, username, password, confirmPassword, gender, role } =
       req.body;
-    if (password !== confirmPassword) {
-      return res.status(400).json({
-        success: false,
-        message: "password do not match!",
-      });
+
+    if (
+      !fullName ||
+      !username ||
+      !password ||
+      !confirmPassword ||
+      !gender ||
+      !role
+    ) {
+      return res.status(400).json({ error: "Please provide all details!" });
     }
+
+    if (password !== confirmPassword) {
+      return res.status(400).json({ error: "Password do not match!" });
+    }
+
     const user = await User.findOne({ username });
+
     if (user) {
-      return res.status(400).json({
-        success: false,
-        message: "username already exist!",
-      });
+      return res.status(400).json({ error: "Username already exists" });
     }
 
     //hash passwor here
@@ -119,10 +134,9 @@ export const signup = async (req, res) => {
     });
 
     if (!newUser) {
-      return res.status(400).json({
-        success: false,
-        message: "Sorry, user does not registered successfully!",
-      });
+      return res
+        .status(400)
+        .json({ error: "Sorry User do not registered successfully!" });
     }
 
     generateTokenAndSetCookie(newUser._id, res);
@@ -138,10 +152,8 @@ export const signup = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-    return res.status(500).json({
-      success: false,
-      message: "some error occoured while registering user!",
-      error,
-    });
+    return res
+      .status(500)
+      .json({ error: "error occured while registering user!" });
   }
 };

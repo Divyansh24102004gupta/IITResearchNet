@@ -97,7 +97,7 @@ const Navbar = () => {
   const { authUser } = useAuthContext();
 
   return (
-    <nav className={`w-full ${authUser ? "bg-slate-900" : "hidden"} py-0 m-0 p-0 fixed top-0 left-0`}>
+    <nav className={`w-full ${authUser ? "bg-slate-900" : "hidden"} py-0 m-0 p-0 fixed top-0 left-0 z-50`}>
       <div className="container mx-auto flex items-center justify-between px-6">
         {/* Logo Section */}
         <div className="logo">
@@ -129,7 +129,7 @@ const Navbar = () => {
             className="text-white hover:text-gray-300"
             onClick={() => setShow(false)}
           >
-            ALL JOBS
+            ALL OPPORTUNITIES
           </Link>
 
           <Link
@@ -137,26 +137,26 @@ const Navbar = () => {
             className="text-white hover:text-gray-300"
             onClick={() => setShow(false)}
           >
-            {authUser && authUser.role === "Employer"
+            {authUser && authUser.role === "Faculty"
               ? "APPLICANT'S APPLICATIONS"
               : "MY APPLICATIONS"}
           </Link>
 
-          {authUser && authUser.role === "Employer" && (
+          {authUser && authUser.role === "Faculty" && (
             <>
               <Link
                 to="/job/post"
                 className="text-white hover:text-gray-300"
                 onClick={() => setShow(false)}
               >
-                POST NEW JOB
+                POST OPENINGS
               </Link>
               <Link
                 to="/job/me"
                 className="text-white hover:text-gray-300"
                 onClick={() => setShow(false)}
               >
-                VIEW YOUR JOBS
+                VIEW YOUR OPENINGS
               </Link>
             </>
           )}

@@ -3,11 +3,19 @@
 @tailwind utilities;
 
 body {
-	background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("/bg.png");
+	background: linear-gradient(rgba(40, 2, 2, 0.2), rgba(21, 17, 17, 0.2));
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
 }
+
+/* body {
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)); /* Adjust opacity for light black 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+} */
+
 
 /* dark mode looking scrollbar */
 ::-webkit-scrollbar {

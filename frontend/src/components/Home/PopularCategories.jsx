@@ -62,12 +62,12 @@ const PopularCategories = () => {
     },
   ];
   return (
-    <div className="categories">
-      <h3>POPULAR CATEGORIES</h3>
-      <div className="banner">
+    <div className="categories text-center text-2xl text-white"  >
+      <h3>Prominent Areas of Research and Development</h3>
+      <div className="banner" >
         {categories.map((element) => {
           return (
-            <div className="card" key={element.id}>
+            <div className="card" key={element.id} style={{backgroundColor:"#1F2937"}}>
               <div className="icon">{element.icon}</div>
               <div className="text">
                 <p>{element.title}</p>

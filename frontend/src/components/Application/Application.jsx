@@ -62,10 +62,10 @@ const Application = () => {
   // }
 
   return (
-    <section className="application mt-72 ">
-      <div className="container">
+    <section className="application mt-72 " >
+      <div className="container" >
         <h1 className="text-5xl text-slate-50 mt-3">Application Form</h1>
-        <form onSubmit={handleApplication} className="mt-0">
+        <form onSubmit={handleApplication} className="mt-0" style={{backgroundColor:'#334155',borderRadius:'10px'}}>
           <input
             type="text"
             placeholder="Your Name"

@@ -27,7 +27,7 @@ const SignUp = () => {
 	}
 
 	return (
-    <div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
+    <div className='flex flex-col items-center justify-center min-w-96 mx-auto  bg-slate-700 rounded-lg'>
  			<div className='w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
  				<h1 className='text-3xl font-semibold text-center text-gray-300'>
  					Sign Up <span className='text-blue-500'>IITResearchNet</span>
@@ -80,8 +80,8 @@ const SignUp = () => {
               			<div>
                 			<select value={inputs.role} onChange={(e) => setInputs({...inputs,role:e.target.value})} className='w-full input input-bordered h-10' >
                   				<option value="">Select Role</option>
-                 	 			<option value="Employer">Employer</option>
-                  				<option value="Job Seeker">Job Seeker</option>
+                 	 			<option value="Faculty">Faculty</option>
+                  				<option value="Student">Student</option>
                 			</select>
               			</div>
             		</div>
