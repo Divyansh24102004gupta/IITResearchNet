@@ -39,15 +39,17 @@ import generateTokenAndSetCookie from "../utils/generateToken.js";
 
 export const login = async (req, res) => {
   try {
-    const { username, password } = req.body;
+    const { username, password, role } = req.body;
     const user = await User.findOne({ username });
     const isPasswordCorrect = await bcrypt.compare(
       password,
       user?.password || ""
     );
 
-    if (!user || !isPasswordCorrect) {
-      return res.status(400).json({ error: "Invalid username or password" });
+    if (!user || !isPasswordCorrect || !role) {
+      return res
+        .status(400)
+        .json({ error: "Invalid username or password or role is not given" });
     }
 
     generateTokenAndSetCookie(user._id, res);
@@ -57,6 +59,7 @@ export const login = async (req, res) => {
       fullName: user.fullName,
       username: user.username,
       profilePic: user.profilePic,
+      role,
     });
   } catch (error) {
     console.log("Error in login controller", error.message);
@@ -82,7 +85,8 @@ export const logout = async (req, res) => {
 
 export const signup = async (req, res) => {
   try {
-    const { fullName, username, password, confirmPassword, gender } = req.body;
+    const { fullName, username, password, confirmPassword, gender, role } =
+      req.body;
     if (password !== confirmPassword) {
       return res.status(400).json({
         success: false,
@@ -111,6 +115,7 @@ export const signup = async (req, res) => {
       password: hashedPassword,
       gender,
       profilePic: gender === "male" ? boyProfilePic : girlProfilePic,
+      role,
     });
 
     if (!newUser) {
@@ -129,6 +134,7 @@ export const signup = async (req, res) => {
       _id: newUser._id,
       fullName: newUser.fullName,
       profilePic: newUser.profilePic,
+      role,
     });
   } catch (error) {
     console.log(error);

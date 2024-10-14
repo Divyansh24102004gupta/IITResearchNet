@@ -20,6 +20,11 @@ const userSchema = new mongoose.Schema(
       required: true,
       enum: ["male", "female"],
     },
+    role: {
+      type: String,
+      required: true,
+      enum: ["Job Seeker", "Employer"],
+    },
     profilePic: {
       type: String,
       default: "",
