@@ -1,8 +1,16 @@
 import React from "react";
 import {FaUniversity} from "react-icons/fa";
-import { SiTesla } from "react-icons/si";
+import { useNavigate } from 'react-router-dom';
 
 const PopularCompanies = () => {
+
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    // Navigate to the specific college page
+    navigate(`/college/670e01ab3cc010e6a69bfd0c`);
+  };
+
   const companies = [
     {
       id: 1,
@@ -14,6 +22,7 @@ const PopularCompanies = () => {
     {
       id: 2,
       title: "IIT Dehli",
+      name:"dehli",
       location: "Dehli, India",
       openPositions: 5,
       icon: <FaUniversity />,
@@ -41,7 +50,7 @@ const PopularCompanies = () => {
                     <p>{element.location}</p>
                   </div>
                 </div>
-                <button>Open Positions {element.openPositions}</button>
+                <button onClick={handleButtonClick}>Open Positions {element.openPositions}</button>
               </div>
             );
           })}

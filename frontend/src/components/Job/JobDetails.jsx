@@ -88,7 +88,7 @@ const JobDetails = () => {
   const { id } = useParams();
   const [job, setJob] = useState({});
   const navigateTo = useNavigate();
-  const { authuser } = useAuthContext();
+  const { authUser } = useAuthContext();
 
   useEffect(() => {
     axios
@@ -105,7 +105,7 @@ const JobDetails = () => {
 
   return (
     <section className="min-h-screen p-4">
-      <div className="container mx-auto bg-slate-800 shadow-lg rounded-lg p-4 m-[300px]">
+      <div className="container mx-auto bg-slate-800 shadow-lg rounded-lg p-4 m-[300px] mt-80">
         <h3 className="text-2xl font-bold mb-4 text-slate-50">Job Details</h3>
         
         <div className="space-y-4 text-slate-50">
@@ -142,7 +142,7 @@ const JobDetails = () => {
           </p>
 
           {/* Apply Now link */}
-          {authuser && authuser.role === "Faculty" ? null : (
+          {authUser && authUser.role === "Faculty" ? null : (
             <Link 
               to={`/application/${job._id}`} 
               className="inline-block mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300"

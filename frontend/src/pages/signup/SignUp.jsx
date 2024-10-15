@@ -12,6 +12,7 @@ const SignUp = () => {
 		confirmPassword:'',
 		gender:'',
 		role:'',
+		college:'',
 	})
 
 	const {signup,loading} = useSignup();
@@ -37,7 +38,7 @@ const SignUp = () => {
  					<div>
  						<label className='label p-2'>
  							<span className='text-base label-text'>Full Name</span>
- 						<input type='text' placeholder='John Doe' className='w-full input input-bordered  h-10'  value={inputs.fullName} onChange={(e) => setInputs({...inputs, fullName:e.target.value})}/>
+ 						<input type='text' placeholder='Enter your name' className='w-full input input-bordered  h-10'  value={inputs.fullName} onChange={(e) => setInputs({...inputs, fullName:e.target.value})}/>
  						</label>
  					</div>
 
@@ -45,7 +46,7 @@ const SignUp = () => {
  						<label className='label p-2 '>
  							<span className='text-base label-text'>Username</span>
  						</label>
- 						<input type='text' placeholder='johndoe' className='w-full input input-bordered h-10' value={inputs.username} onChange={(e) => setInputs({...inputs, username:e.target.value})}/>
+ 						<input type='text' placeholder='Enter username' className='w-full input input-bordered h-10' value={inputs.username} onChange={(e) => setInputs({...inputs, username:e.target.value})}/>
  					</div>
 
  					<div>
@@ -71,6 +72,37 @@ const SignUp = () => {
 							value={inputs.confirmPassword} onChange={(e) => setInputs({...inputs, confirmPassword:e.target.value})}
  						/>
  					</div>
+
+					 <div className="inputTag">
+                		<label className='label'>
+							<span className='text-base label-text'>College</span>
+						</label>
+              			<div>
+                			<select value={inputs.college} onChange={(e) => setInputs({...inputs,college:e.target.value})} className='w-full input input-bordered h-10' >
+                  				<option value="">College</option>
+                 	 			<option value="IIT Patna">IIT Patna</option>
+                  				<option value="IIT Bombay">IIT Bombay</option>
+                 	 			<option value="IIT Dehli">IIT Dehli</option>
+                  				<option value="IIT Madras">IIT Madras</option>
+                 	 			<option value="IIT Kanpur">IIT Kanpur</option>
+                  				<option value="IIT Kharagpur">IIT Kharagpur</option>
+                 	 			<option value="IIT Roorkee">IIT Roorkee</option>
+                  				<option value="IIT BHU">IIT BHU</option>
+								<option value="IIT Hyderabad">IIT Hyderabad</option>
+                  				<option value="IIT Guwahati">IIT Guwahati</option>
+                 	 			<option value="IIT Bhubaneswar">IIT Bhubaneswar</option>
+                  				<option value="IIT Gandhinagar">IIT Gandhinagar</option>
+                 	 			<option value="IIT Jodhpur ">IIT Jodhpur </option>
+                  				<option value="IIT Ropar">IIT Ropar</option>
+                 	 			<option value="IIT Indore">IIT Indore</option>
+                  				<option value="IIT Mandi">IIT Mandi</option>
+								<option value="IIT Palakkad">IIT Palakkad</option>
+                  				<option value="IIT Tirupati">IIT Tirupati</option>
+                 	 			<option value="IIT Dhanbad">IIT Dhanbad</option>
+                  				<option value="IIT Jammu">IIT Jammu</option>
+                			</select>
+              			</div>
+            		</div>
 
 
 					 <div className="inputTag">

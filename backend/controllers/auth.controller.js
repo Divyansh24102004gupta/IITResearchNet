@@ -2,41 +2,6 @@ import { User } from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import generateTokenAndSetCookie from "../utils/generateToken.js";
 
-// export const login = async (req, res) => {
-//   try {
-//     const { username, password } = req.body;
-//     const user = await User.findOne({ username });
-//     if (!user) {
-//       return res.status(400).json({
-//         success: false,
-//         message: "invalid credentials!",
-//       });
-//     }
-//     const isPasswordCorrect = await bcrypt.compare(password, user.password);
-//     if (!isPasswordCorrect) {
-//       return res.status(400).json({
-//         success: false,
-//         message: "invalid credentials!",
-//       });
-//     }
-//     generateTokenAndSetCookie(user._id, res);
-
-//     return res.status(200).json({
-//       success: true,
-//       message: "user logged in successfully!",
-//       _id: user._id,
-//       fullName: user.fullName,
-//       profilePic: user.profilePic,
-//     });
-//   } catch (error) {
-//     console.log(error);
-//     return res.status(500).json({
-//       success: false,
-//       message: "Sorry, user do not logged in successfully!",
-//     });
-//   }
-// };
-
 export const login = async (req, res) => {
   try {
     const { username, password, role } = req.body;
@@ -67,6 +32,7 @@ export const login = async (req, res) => {
       username: user.username,
       profilePic: user.profilePic,
       role: user.role,
+      college: user.college,
     });
   } catch (error) {
     console.log("Error in login controller", error.message);
@@ -92,8 +58,15 @@ export const logout = async (req, res) => {
 
 export const signup = async (req, res) => {
   try {
-    const { fullName, username, password, confirmPassword, gender, role } =
-      req.body;
+    const {
+      fullName,
+      username,
+      password,
+      confirmPassword,
+      gender,
+      role,
+      college,
+    } = req.body;
 
     if (
       !fullName ||
@@ -101,7 +74,8 @@ export const signup = async (req, res) => {
       !password ||
       !confirmPassword ||
       !gender ||
-      !role
+      !role ||
+      !college
     ) {
       return res.status(400).json({ error: "Please provide all details!" });
     }
@@ -131,6 +105,7 @@ export const signup = async (req, res) => {
       gender,
       profilePic: gender === "male" ? boyProfilePic : girlProfilePic,
       role,
+      college,
     });
 
     if (!newUser) {
@@ -149,6 +124,7 @@ export const signup = async (req, res) => {
       fullName: newUser.fullName,
       profilePic: newUser.profilePic,
       role,
+      college,
     });
   } catch (error) {
     console.log(error);

@@ -13,6 +13,7 @@ const useSignup = () => {
     confirmPassword,
     gender,
     role,
+    college,
   }) => {
     const success = handleInputError({
       fullName,
@@ -21,6 +22,7 @@ const useSignup = () => {
       confirmPassword,
       gender,
       role,
+      college,
     });
     if (!success) {
       return;
@@ -36,6 +38,7 @@ const useSignup = () => {
           confirmPassword,
           gender,
           role,
+          college,
         }),
       });
 
@@ -66,6 +69,7 @@ function handleInputError({
   confirmPassword,
   gender,
   role,
+  college,
 }) {
   if (
     !fullName ||
@@ -73,7 +77,8 @@ function handleInputError({
     !password ||
     !confirmPassword ||
     !gender ||
-    !role
+    !role ||
+    !college
   ) {
     toast.error("Please fill all fields!");
     return false;

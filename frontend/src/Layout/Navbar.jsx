@@ -118,6 +118,13 @@ const Navbar = () => {
             HOME
           </Link>
           <Link
+            to="/colleges"
+            className="text-white hover:text-gray-300"
+            onClick={() => setShow(false)}
+          >
+           ALL COLLEGES
+          </Link>
+          <Link
             to="/chat"
             className="text-white hover:text-gray-300"
             onClick={() => setShow(false)}

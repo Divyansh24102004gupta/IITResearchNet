@@ -84,7 +84,7 @@ const Jobs = () => {
       <div className="container mx-auto">
         <h1 className="text-3xl text-white font-bold text-center mb-8 bg-blend-saturation">All Current Research Opportunities</h1>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-32">
           {jobs.jobs &&
             jobs.jobs.map((element) => (
               <div
@@ -93,7 +93,8 @@ const Jobs = () => {
               >
                 <h2 className="text-xl text-slate-50 font-semibold">{element.title}</h2>
                 <p className="text-slate-50">{element.category}</p>
-                <p className="text-slate-50">{element.country}</p>
+                <p className="text-slate-50">Posted By: {element.postedBy.username}</p>
+                <p className="text-slate-50">{element.postedBy?.college}</p>
                 <Link
                   to={`/job/${element._id}`}
                   className="mt-4 inline-block text-blue-600 hover:underline"

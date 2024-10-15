@@ -14,6 +14,8 @@ import MyJobs from './components/Job/MyJobs';
 import Application from './components/Application/Application'
 import MyApplications from './components/Application/MyApplications'
 import Home from './components/Home/Home'
+import Colleges from './components/College/Colleges'
+import CollegeJobs from './components/College/CollegeJobs'
 
 function App() {
 
@@ -26,6 +28,8 @@ function App() {
         <Route path='/signup' element={authUser ? <Navigate to={"/"} /> : <SignUp/>}/>
         <Route path='/login' element={authUser ? <Navigate to={"/"} /> : <Login/>}/>
         <Route path="/job/getall" element={authUser ? <Jobs/> : <Navigate to={"/login"} />} />
+        <Route path="/colleges" element={authUser ? <Colleges/> : <Navigate to={"/login"} />} />
+        <Route path="/college/:id" element={authUser ? <CollegeJobs/> : <Navigate to={"/login"} />} />
         <Route path="/job/:id" element={authUser ? <JobDetails/> : <Navigate to={"/login"} />} />
         <Route path="/job/post" element={(authUser && authUser.role === "Faculty") ? <PostJob/> : <Navigate to={"/login"} />} />
         <Route path="/job/me" element={(authUser && authUser.role === "Faculty")? <MyJobs/> : <Navigate to={"/login"} />} />

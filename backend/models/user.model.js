@@ -25,6 +25,10 @@ const userSchema = new mongoose.Schema(
       required: true,
       enum: ["Faculty", "Student"],
     },
+    college: {
+      type: String,
+      required: true,
+    },
     profilePic: {
       type: String,
       default: "",
