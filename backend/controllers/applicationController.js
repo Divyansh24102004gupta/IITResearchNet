@@ -70,6 +70,7 @@ export const postApplication = catchAsyncErrors(async (req, res, next) => {
     address,
     applicantID,
     employerID,
+    jobId,
     resume: {
       public_id: cloudinaryResponse.public_id,
       url: cloudinaryResponse.secure_url,
@@ -85,9 +86,12 @@ export const postApplication = catchAsyncErrors(async (req, res, next) => {
 export const employerGetAllApplications = catchAsyncErrors(
   async (req, res, next) => {
     const { role } = req.user;
-    if (role === "Job Seeker") {
+    if (role === "Student") {
       return next(
-        new ErrorHandler("Job Seeker not allowed to access this resource.", 400)
+        new ErrorHandler(
+          "Students are not allowed to access this resource.",
+          400
+        )
       );
     }
     const { _id } = req.user;

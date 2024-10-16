@@ -15,7 +15,7 @@ const MyApplications = () => {
 
   useEffect(() => {
     try {
-      if (authUser && authUser.role === "Employer") {
+      if (authUser && authUser.role === "Faculty") {
         axios
           .get("/api/application/employer/getall", {
             withCredentials: true,
@@ -32,6 +32,8 @@ const MyApplications = () => {
             setApplications(res.data.applications);
           });
       }
+      console.log(authUser);
+      console.log(applications);
     } catch (error) {
       toast.error(error.response.data.message);
     }
@@ -58,6 +60,14 @@ const MyApplications = () => {
     }
   };
 
+  const redirectToJob = (id) => {
+    try {
+      navigateTo(`/job/${id}`)
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+  };
+
   const openModal = (imageUrl) => {
     setResumeImageUrl(imageUrl);
     setModalOpen(true);
@@ -68,8 +78,8 @@ const MyApplications = () => {
   };
 
   return (
-    <section className={`my_applications page ${applications.length <= 0 ? 'bg-transparent mt-48 text-4xl text-center text-white':"mt-48 bg-transparent pl-0 pr-0 w-full"}`}>
-      {authUser && authUser.role === "Job Seeker" ? (
+    <section className={`my_applications page ${applications.length <= 0 ? 'bg-transparent mt-80 text-4xl text-center text-white':"mt-48 bg-transparent pl-0 pr-0 w-full"}`}>
+      {authUser && authUser.role === "Student" ? (
         <div className="container bg-slate-700 w-screen">
           <h1>My Applications</h1>
           {applications.length <= 0 ? (
@@ -85,6 +95,7 @@ const MyApplications = () => {
                   key={element._id}
                   deleteApplication={deleteApplication}
                   openModal={openModal}
+                  redirectToJob = {redirectToJob}
                 />
               );
             })
@@ -104,6 +115,7 @@ const MyApplications = () => {
                   element={element}
                   key={element._id}
                   openModal={openModal}
+                  redirectToJob = {redirectToJob}
                 />
               );
             })
@@ -119,10 +131,10 @@ const MyApplications = () => {
 
 export default MyApplications;
 
-const JobSeekerCard = ({ element, deleteApplication, openModal }) => {
+const JobSeekerCard = ({ element, deleteApplication, openModal,redirectToJob}) => {
   return (
     <>
-      <div className="job_seeker_card">
+      <div className="job_seeker_card ml-3">
         <div className="detail">
           <p>
             <span>Name:</span> {element.name}
@@ -139,6 +151,9 @@ const JobSeekerCard = ({ element, deleteApplication, openModal }) => {
           <p>
             <span>CoverLetter:</span> {element.coverLetter}
           </p>
+          <button onClick={() => redirectToJob(element.jobId)} className="text-center bg-slate-800 w-48 rounded-xl">
+            click on this to view applied job
+          </button>
         </div>
         <div className="resume">
           <img
@@ -147,7 +162,7 @@ const JobSeekerCard = ({ element, deleteApplication, openModal }) => {
             onClick={() => openModal(element.resume.url)}
           />
         </div>
-        <div className="btn_area">
+        <div className="bg-slate-800 w-48 rounded-lg text-center h-8 justify-center text-xl">
           <button onClick={() => deleteApplication(element._id)}>
             Delete Application
           </button>
@@ -157,10 +172,10 @@ const JobSeekerCard = ({ element, deleteApplication, openModal }) => {
   );
 };
 
-const EmployerCard = ({ element, openModal }) => {
+const EmployerCard = ({ element, openModal,redirectToJob }) => {
   return (
     <>
-      <div className="job_seeker_card">
+      <div className="job_seeker_card ml-3">
         <div className="detail">
           <p>
             <span>Name:</span> {element.name}
@@ -177,6 +192,9 @@ const EmployerCard = ({ element, openModal }) => {
           <p>
             <span>CoverLetter:</span> {element.coverLetter}
           </p>
+          <button onClick={() => redirectToJob(element.jobId)} className="text-center bg-slate-800 w-48 rounded-xl">
+            Job For which student applied
+          </button>
         </div>
         <div className="resume">
           <img

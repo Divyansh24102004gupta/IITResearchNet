@@ -93,7 +93,7 @@ const PostJob = () => {
             <option value="Undergraduate Research Programs">Undergraduate Research Programs</option>
             <option value="Graduate Research Programst">Graduate Research Programs</option>
             <option value="Postdoctoral Research Programs">Postdoctoral Research Programs</option>
-            <option value="ndustry-Sponsored Research Programs">ndustry-Sponsored Research Programs</option>
+            <option value="Industry-Sponsored Research Programs">Industry-Sponsored Research Programs</option>
             <option value="Fellowship Research Programs">Fellowship Research Programs</option>
             <option value="Collaborative Research Programs">Collaborative Research Programs</option>
             <option value="Summer Research Programs">Summer Research Programs</option>

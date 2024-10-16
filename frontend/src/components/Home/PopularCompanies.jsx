@@ -8,7 +8,7 @@ const PopularCompanies = () => {
 
   const handleButtonClick = () => {
     // Navigate to the specific college page
-    navigate(`/college/670e01ab3cc010e6a69bfd0c`);
+    navigate(`/abs`);
   };
 
   const companies = [
